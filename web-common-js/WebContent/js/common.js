@@ -10,3 +10,26 @@ function is_null(value){
 		return false 
 	}
 }
+
+// only_number
+(function($) {
+    $.fn.OnlyNumber = function(options) {
+    	var settings = $.extend({
+    		type : "normal", // normal, money
+    		is_int : false
+    	},options);
+    	
+    	$(this).bind("keyup change", function(e){
+    		var text = '' ;
+    		if(settings.is_int == true){
+    			text = $(this).val().replace(/[^0-9]/g,'');
+    		}else{
+    			text = $(this).val().replace(/[^0-9\.]/g,'');
+    		}
+    		if(settings.type == "money"){
+    			text = number_format(text);
+    		}
+    		$(this).val(text);
+    	});
+    };
+})(jQuery);
