@@ -1,27 +1,66 @@
-<script src="../js/common.js"></script>
+<!-- CSS -->
+<link href="../css/monthPicker.css" rel="stylesheet">
+<link href="../css/jquery-ui-1.12.4.base.css" rel="stylesheet">
+    
+<!-- js lib -->
 <script src="../lib/jquery-3.3.1.min.js"></script>
+<script src="../lib/jquery-ui-1.12.1.js"></script>
+
+<!-- script -->
+<script src="../js/common.js"></script>
+<script src="../js/monthPicker.js"></script>
+<script src="../js/weekPicker.js"></script>
+
+<!-- test html style -->
 <style>
 div {margin-bottom:10px;}
-h5 {margin-bottom:0px;}
+h4 {margin-bottom:0px;}
 </style>
-<h1>그냥 해봐 == JUST DO IT! return true</h1>
+
+<!-- test html content -->
+<!-- <h1>그냥 해봐 == JUST DO IT! return true</h1> -->
 <div>
-	<h5>number_format Test</h5>
+	<h4>number_format Test</h4>
 	<input id="number_format_text" type="text" value="10000"/><input type="button" value="number_format" onclick="number_format_test()"/>
 </div>
 <div>
-	<h5>is_null_text Test</h5>
+	<h4>is_null_text Test</h4>
 	<input id="is_null_text" type="text" value="test"/><input type="button" value="is_null" onclick="is_null_test()"/>
 </div>
+<div>
+	<h4>weekPicker Test</h4>
+	week type : <input type="text" name="week_picker" size="6" ><br>
+	range type : <input type="text" name="week_picker2" >
+</div>
+<div>
+	<h4>monthPicker Test</h4>
+	<input type="text" name="month_picker" size="6">
+</div>
+
+
+<!-- test script -->
 <script>
+	// number_format
 	function number_format_test(){
 		var to_be = $("#number_format_text").val();
 		var as_is = number_format(to_be);
 		$("#number_format_text").val(as_is);
 	}
+	// is_null
 	function is_null_test(){
 		var value = $("#is_null_text").val();
 		var result = is_null(value);
 		alert(" value null is : [ "+result+" ]");
 	}
+	// week_picker (2 types)
+	convertToWeekPicker($("[name=week_picker]"),"week"); // ex) 2018-35
+	convertToWeekPicker($("[name=week_picker2]")); // default(range) ex) 2018-09-03~2018-09-09
+	
+	// month picker
+	 $("[name=month_picker]").MonthPicker({
+        Animation: 'none', 
+        Button: false
+    });
+	
+	
 </script>
